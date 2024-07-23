@@ -1,0 +1,12 @@
+runtime: nodejs22
+
+handlers:
+  - url: /
+    static_files: dist/tag-automator-frontend/browser/index.html
+    upload: dist/incident-wheel-frontend/browser/index.html
+
+  - url: /
+    static_dir: dist/tag-automator-frontend/browser
+
+manual_scaling:
+  instances: 1

@@ -1,0 +1,8 @@
+runtime: python312
+service: backend
+
+env_variables:
+  SCOPE: "organizations/57225061579"
+
+manual_scaling:
+  instances: 1

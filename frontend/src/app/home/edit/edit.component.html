@@ -1,0 +1,50 @@
+<form [formGroup]="form">
+  <div formArrayName="tagBindings">
+    @for (tag of tagBindingsForm.controls; track tag) {
+      <div class="tag-form" [formGroupName]="$index">
+        <!-- Key -->
+        <mat-form-field>
+          <mat-label>Key</mat-label>
+          <mat-select formControlName="key">
+            @for (tagKey of filterKeys(); track tagKey.id) {
+              <mat-option [value]="tagKey.id">{{ tagKey.value }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Value -->
+        <mat-form-field>
+          <mat-label>Value</mat-label>
+          <mat-select formControlName="value">
+            @for (tagValue of filterValues($index); track tagValue.id) {
+              <mat-option [value]="tagValue.id">{{
+                tagValue.value
+              }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Delete this tag -->
+        <button
+          mat-fab
+          color="warn"
+          class="delete-button"
+          aria-label="delete icon"
+          (click)="deleteBinding($index)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    }
+  </div>
+</form>
+
+<button
+  class="new-tag-btn"
+  [disabled]="!form.valid"
+  (click)="newBinding()"
+  mat-flat-button
+  color="primary"
+>
+  Add tag to list
+</button>

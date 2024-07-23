@@ -1,0 +1,25 @@
+<div class="tags-dialog">
+  <h2 mat-dialog-title>Available tags</h2>
+  <mat-dialog-content>
+    @if (data.tags.length == 0) {
+      <p>
+        There are no available tags, please check your backend configuration.
+      </p>
+    } @else {
+      <p>Available tags ({{ data.tags.length }}):</p>
+      <mat-list class="tags-container">
+        @for (tag of data.tags; track tag) {
+          <mat-list-item>
+            <mat-icon matListItemIcon>sell</mat-icon>
+            <div matListItemTitle>{{ tag.key.value }}</div>
+            <span>{{ formatTagValues(tag) }}</span>
+          </mat-list-item>
+        }
+      </mat-list>
+    }
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="center">
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</div>
