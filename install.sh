@@ -31,6 +31,7 @@ gcloud app create --region=$REGION --project=$PROJECT_ID
 
 # Enable needed services
 gcloud services enable cloudasset.googleapis.com --project=$PROJECT_ID
+gcloud services enable cloudresourcemanager.googleapis.com --project=$PROJECT_ID
 gcloud services enable iap.googleapis.com --project=$PROJECT_ID
 
 printf "\n\033[0;31mActions:\033[0m\n\n"
